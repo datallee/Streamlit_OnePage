@@ -65,7 +65,7 @@ def main():
     # Vérifier si l'utilisateur est déjà authentifié
     if "authenticated" in st.session_state and st.session_state["authenticated"]:
         accueil()  # Appel à la fonction d'accueil si l'utilisateur est connecté
-        navigation()  # Affichage des pages via le menu de navigation
+        page()  # Affichage des pages via le menu de navigation
         if st.button("Se déconnecter"):
             logout(user_data)  # Permet à l'utilisateur de se déconnecter
     else:
