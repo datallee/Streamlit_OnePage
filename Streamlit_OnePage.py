@@ -30,8 +30,8 @@ def authenticate_user(username, password, user_data):
     
     return True, user['role']
 
-#def accueil():
-      
+def accueil():
+      st.title("Vous êtes bien connecté")
 
 # Fonction de déconnexion
 def logout(user_data):
