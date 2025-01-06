@@ -30,8 +30,8 @@ def authenticate_user(username, password, user_data):
     
     return True, user['role']
 
-def accueil():
-    st.title("Bienvenue sur ma page")    
+#def accueil():
+      
 
 # Fonction de déconnexion
 def logout(user_data):
@@ -39,7 +39,7 @@ def logout(user_data):
     user_data.loc[user_data['name'] == username, 'logged_in'] = False
     user_data.to_csv('users.csv', index=False)  # Enregistrer les modifications dans le fichier CSV
     st.session_state.clear()  # Clear session state to log out the user
-    st.success("Vous êtes maintenant déconnecté.")
+    st.success("Vous êtes maintenant déconnecté. Réappuyez pour revenir à l'accueil. ")
 
 # Interface utilisateur pour la connexion
 def login(user_data):
@@ -55,7 +55,7 @@ def login(user_data):
             st.session_state["authenticated"] = True
             st.session_state["role"] = message  # Rôle de l'utilisateur (admin, utilisateur, etc.)
             st.session_state["username"] = username
-            st.success(f"Bienvenue, {username}!")
+            st.success(f"Bienvenue, {username}! Réappuyez pour entrer.")
         else:
             st.error(message)
 
@@ -66,7 +66,7 @@ def page():
                     options = ["Accueil", "Les Photos"]
         )
     if selection == "Accueil":
-        accueil()
+        st.title("Bienvenue sur ma page")
     elif selection == "Les Photos":
         col1, col2, col3 = st.columns(3)
         with col1:
