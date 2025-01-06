@@ -30,6 +30,26 @@ def authenticate_user(username, password, user_data):
     
     return True, user['role']
 
+def accueil():
+    st.title("Bienvenue sur ma page")    
+
+def photos():
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.header("A cat")
+        st.image("https://static.streamlit.io/examples/cat.jpg")
+
+    with col2:
+        st.header("A dog")
+        st.image("https://static.streamlit.io/examples/dog.jpg")
+
+    with col3:
+        st.header("An owl")
+        st.image("https://static.streamlit.io/examples/owl.jpg")
+
+        # Ajout d'un fond sonore
+        #st.audio("vent.mp3", format="audio/mpeg")
+
 # Fonction de déconnexion
 def logout(user_data):
     username = st.session_state["username"]
@@ -56,6 +76,17 @@ def login(user_data):
         else:
             st.error(message)
 
+def page():
+    with st.sidebar:
+        selection = option_menu(
+                    menu_title=None,
+                    options = ["Accueil", "Les Photos"]
+        )
+
+    if selection == "Accueil":
+        accueil()
+    elif selection == "Les Photos":
+        photos()
 
 # Fonction principale
 def main():
@@ -73,37 +104,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-def accueil():
-    st.title("Bienvenue sur ma page")    
-
-def photos():
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.header("A cat")
-        st.image("https://static.streamlit.io/examples/cat.jpg")
-
-    with col2:
-        st.header("A dog")
-        st.image("https://static.streamlit.io/examples/dog.jpg")
-
-    with col3:
-        st.header("An owl")
-        st.image("https://static.streamlit.io/examples/owl.jpg")
-
-        # Ajout d'un fond sonore
-        #st.audio("vent.mp3", format="audio/mpeg")
-
-
-def page():
-    with st.sidebar:
-        selection = option_menu(
-                    menu_title=None,
-                    options = ["Accueil", "Les Photos"]
-        )
-
-    if selection == "Accueil":
-        accueil()
-    elif selection == "Les Photos":
-        photos()
